@@ -1,0 +1,58 @@
+/* login */
+.com-bg{background:#edeef2 url("../images/mana-imgs/login_bg.jpg") repeat-x fixed top center;background-size:100% 50%;}
+/* 背景 */
+.manage-bg{background:#edeef2;}
+/* 头部侧边背景 */
+.manage-common-bg{background:#2c2e43;}
+.nav-sidebar>li{background:#2c2e43;}
+.userphoto:after{background:#90d852;border-color:#2c2e43;}
+/* 侧边选中效果 */
+.nav-submenu>li:hover,.nav-submenu>.active{background:#24273a;}
+.nav-sidebar>li>a:hover,.nav-sidebar>.active>a{border-left-color:#20b0f7;background:#24273a;}
+.nav-submenu>li:before{background:#20b0f7;}
+.nav-submenu>li a{color:#fff;}
+/* content */
+/* 细节部分调整 */
+/* 电商销售 */
+.E-commerce-range-wrap{height:232px;overflow: hidden;}
+.E-commerce-range{padding:0;margin-bottom:0;text-align: center;}
+.E-commerce-range>li div{padding:8px;box-sizing: border-box;}
+.manage-data-count>div{padding:12px 0 8px;border-radius:2px;border-top-left-radius: 28px;width:20%;margin-left:18px;margin-right:calc(20% / 3 - 24px);margin-right:-moz-calc(20% / 3 - 24px);margin-right:-webkit-calc(20% / 3 - 24px);font-size:16px;float:left;}
+.manage-data-count>div:last-child{margin-right:0;}
+.manage-data-count>div p{line-height:1.5;margin-bottom:0;}
+.notice-wrap{height:210px;overflow: hidden;margin-bottom:14px;}
+
+.table .range-title th{background:#efefef;}
+.notice-list>a:before{background:#20b0f7;}
+.count-title{padding:25px 0 25px 8px;margin:0;}
+.count-title>.glyphicon-edit{color:#000;}
+.deal-num{color:#20b0f7;font-size:17px;}
+/* 订单头部圆圈 */
+.icon-disc:before{/*background:#20b0f7;*/border:2px solid #2c2e43;}
+/* 待办订单部分 */
+.deal-list{height:224px;}
+.deal-list>a{width:21%;padding:12px 3%;margin-right:calc(16% / 3);background:#f8f8f8;border:1px solid #e6eaec;border-top:2px solid #20b0f7;margin-bottom:38px;}
+.deal-list>a:nth-child(4n){margin-right:0;}
+
+/* 通用a样式-带下划线 */
+.link-event{color:#1aa5e9;text-decoration: underline;}
+
+/* 通用btn */
+.confirm-btn{background:#20b0f7;}
+.btn-mini{color:#129ce0;}
+
+/* 弹窗头部 */
+.modal-normal .modal-header{background-color:#2c2e43;}
+
+/* 媒体查询 */
+@media (max-width: 1350px){
+    .icon-blue-circle{font-size:17px;}
+    .deal-list>a{padding:12px 8px;}
+    .deal-list>a p{font-size:14px;}
+}
+@media (max-width: 1620px){
+    .deal-list>a{width:23%;padding:12px 3%;margin-right:calc(8% / 3);}
+}
+@media (max-width: 1400px){
+    .deal-list>a{width:24%;padding:12px 10px;margin-right:calc(4% / 3);}
+}

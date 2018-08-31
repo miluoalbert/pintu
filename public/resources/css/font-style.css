@@ -1,0 +1,162 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?fwxu7w');
+  src:  url('fonts/icomoon.eot?fwxu7w#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?fwxu7w') format('truetype'),
+    url('fonts/icomoon.woff?fwxu7w') format('woff'),
+    url('fonts/icomoon.svg?fwxu7w#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: middle;;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-markN:before {
+  content: "\e91f";
+}
+.icon-error:before {
+  content: "\e920";
+}
+.icon-adminM:before {
+  content: "\e921";
+}
+.icon-close:before {
+  content: "\e900";
+}
+.icon-home:before {
+  content: "\e905";
+  color: #fff;
+}
+.icon-record:before {
+  content: "\e906";
+  color: #edeef2;
+}
+.icon-order:before {
+  content: "\e907";
+  color: #edeef2;
+}
+.icon-goods:before {
+  content: "\e908";
+  color: #edeef2;
+}
+.icon-logistics:before {
+  content: "\e909";
+  color: #edeef2;
+}
+.icon-invoice:before {
+  content: "\e90a";
+  color: #edeef2;
+}
+.icon-card:before {
+  content: "\e90b";
+  color: #edeef2;
+}
+.icon-custom-service:before {
+  content: "\e90c";
+  color: #edeef2;
+}
+.icon-message:before {
+  content: "\e90d";
+  color: #edeef2;
+}
+.icon-setting:before {
+  content: "\e90e";
+  color: #edeef2;
+}
+.icon-exit:before {
+  content: "\e90f";
+  color: #fff;
+}
+.icon-point:before {
+  content: "\e910";
+  color: #20b0f7;
+}
+.icon-filled .path1:before {
+  content: "\e911";
+  color: rgb(134, 192, 43);
+}
+.icon-filled:before {
+  content: "\e912";
+  color: rgb(255, 255, 255);
+}
+.icon-unfilled .path1:before {
+  content: "\e913";
+  color: rgb(200, 200, 200);
+}
+.icon-unfilled:before {
+  content: "\e914";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-merchant:before {
+  content: "\e915";
+  color: #edeef2;
+}
+.icon-msg:before {
+  content: "\e916";
+  color: #edeef2;
+}
+.icon-rec-mat:before {
+  content: "\e917";
+  color: #edeef2;
+}
+.icon-order-dis:before {
+  content: "\e918";
+  color: #edeef2;
+}
+.icon-examine:before {
+  content: "\e919";
+  color: #edeef2;
+}
+.icon-bill:before {
+  content: "\e91a";
+  color: #edeef2;
+}
+.icon-payment:before {
+  content: "\e91b";
+  color: #edeef2;
+}
+.icon-sale:before {
+  content: "\e91c";
+  color: #edeef2;
+}
+.icon-notice:before {
+  content: "\e91d";
+  color: #e46467;
+}
+.icon-price:before {
+  content: "\e91e";
+  color: #4554af;
+}
+.icon-uname:before {
+  content: "\e901";
+  color: #c6c7d4;
+}
+.icon-psd:before {
+  content: "\e902";
+  color: #c6c7d4;
+}
+.icon-code:before {
+  content: "\e903";
+  color: #c6c7d4;
+}
+.icon-add:before {
+  content: "\e904";
+}
+.icon-tick:before {
+  content: "\e912";
+}
