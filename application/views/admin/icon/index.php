@@ -5,11 +5,24 @@
             <button type="button" class="btn add-btn"><i class="icon-add"></i>添加图标</button>
         </span>
     </h4>
+    <div style="margin: 10px 0">
+        <a class="btn btn-primary" role="button" href="<?=base_url('admin/icon/index')?>">全部分类</a>
+        <?php if (! empty($category)): foreach ($category as $key => $value):?>
+            <a class="btn btn-primary" role="button" href="<?=base_url('admin/icon/index?category=' . $key)?>"><?=$value?></a>
+        <?php endforeach; endif;?>
+    </div>
     <!--  通用表格样式 -->
     <table class="table table-bordered panel-bg panel-table" >
         <thead class="panel-table-title">
-        <tr><th>ID</th><th>ICON</th><th>IMAGE</th><th>图标名称</th><th>图标英文名称</th><th>是否显示</th>
-            <th>所属分类</th><th>排序</th><th>添加时间</th><th>编辑时间</th><th>操作</th></tr>
+        <tr><th>ID</th><th>ICON</th><th>IMAGE</th><th>图标名称</th>
+            <th>图标英文名称</th><th>是否显示</th><th>所属分类</th>
+            <th><a href="<?=$sortBaseUrl . 's=1'?><?=empty($d) ? '&d=1' : ''?>">排序
+                    <span class="glyphicon glyphicon-triangle-<?=(empty($d) && $s == 1) ? 'top' : 'bottom'?>"></a></th>
+            <th><a href="<?=$sortBaseUrl . 's=2'?><?=empty($d) ? '&d=1' : ''?>">添加时间
+                    <span class="glyphicon glyphicon-triangle-<?=(empty($d) && $s == 2) ? 'top' : 'bottom'?>"></span></a></th>
+            <th><a href="<?=$sortBaseUrl . 's=3'?><?=empty($d) ? '&d=1' : ''?>">编辑时间
+                    <span class="glyphicon glyphicon-triangle-<?=(empty($d) && $s == 3) ? 'top' : 'bottom'?>"></span></a></th>
+            <th>操作</th></tr>
         </thead>
         <tbody>
         <?php if (! empty($data)): foreach ($data as $row):?>

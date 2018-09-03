@@ -16,25 +16,50 @@ class Icon extends AdminController
             'data' => [],
             'page' => null,
         ];
+
+        $viewData['sortBaseUrl'] = base_url() . uri_string() . '?';
+        $categoryId = (int)$this->input->get('category');
+        $sortType = $this->input->get('s');
+        $sortDirection = (int)$this->input->get('d');
+
+        $conditions = [];
+        if (0 < $categoryId) {
+            $conditions['category_id'] = $categoryId;
+            $getParam['category'] = $categoryId;
+            $viewData['sortBaseUrl'] .= http_build_query($getParam) . '&';
+        }
+
+        $getParam['s'] = $sortType;
+        $getParam['d'] = $sortDirection;
+        $viewData['s'] = $sortType;
+        $viewData['d'] = $sortDirection;
+
+        $orderBy = [
+            'field' => $sortType,
+            'direction' => $sortDirection,
+        ];
+
+        // 分类数据
+        $this->load->model('category_model');
+        $category = $this->category_model->getAll();
+        if (! empty($category)) {
+            foreach ($category as $item) {
+                $viewData['category'][$item['id']] = $item['name'];
+            }
+        }
+
+        // 分页数据
         $this->load->model('icon_model');
-        $config['total_rows'] = $this->icon_model->count();
+        $config['total_rows'] = $this->icon_model->count($conditions);
         if (0 < $config['total_rows']) {
             $config['per_page'] = 10;
             $config['base_url'] = base_url('admin/icon/index');
-            $this->load->library('pagination');
             $config['uri_segment'] = 4;
+            $this->load->library('pagination');
             $this->pagination->initialize($config);
             $viewData['page'] = $this->pagination->create_links();
             $pageNum = $this->uri->segment(4, 1);
-            $viewData['data'] = $this->icon_model->getPage($pageNum, $config['per_page']);
-            // 分类数据
-            $this->load->model('category_model');
-            $category = $this->category_model->getAll();
-            if (! empty($category)) {
-                foreach ($category as $item) {
-                    $viewData['category'][$item['id']] = $item['name'];
-                }
-            }
+            $viewData['data'] = $this->icon_model->getPage($pageNum, $conditions, $orderBy, $config['per_page']);
         }
 
         $this->view('icon/index', $viewData);

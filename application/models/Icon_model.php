@@ -10,21 +10,39 @@
 class Icon_model extends CI_Model
 {
     private const table = 'icon';
+    private const sortRule = [
+        1 => 'sort',
+        2 => 'created_at',
+        3 => 'updated_at',
+    ];
 
-    public function getPage(int $page, int $pageSize = 20)
+    public function getPage(int $page = 1, array $conditions = [], array $orderBy = ['field' => 1, 'direction' => 0], int $pageSize = 10)
     {
+        $sort = 'sort';
+        $direction = 'desc';
+        if (! empty($orderBy['field']) && in_array($orderBy['field'], array_keys(self::sortRule))) {
+            $sort = self::sortRule[$orderBy['field']];
+            $direction = empty($orderBy['direction']) ? ' desc' : ' asc';
+        }
         $limit = 0 >= $pageSize ? 20 : $pageSize;
         $offset = ($page - 1) * $limit;
-        return $this->db->from(self::table)
-            ->order_by('sort', 'desc')
+        empty($conditions) || $this->db->where($conditions);
+        $return = $this->db->from(self::table)
+            ->order_by($sort, $direction)
             ->order_by('id', 'desc')
             ->limit($limit, $offset)
             ->get()
             ->result_array();
+//        echo $this->db->last_query();die;
+        return $return;
     }
-    public function count(): int
+
+    public function count(array $conditions = []): int
     {
-        return $this->db->count_all(self::table);
+        empty($conditions) || $this->db->where($conditions);
+        return $this->db
+            ->from(self::table)
+            ->count_all_results();
     }
 
     public function add($data)
