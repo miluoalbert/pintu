@@ -13,9 +13,10 @@ class Category_model extends CI_Model
 
     public function getAll()
     {
-        return $this->db->from(self::table)
-                        ->get()
-                        ->result_array();
+        return $this->db
+            ->from(self::table)
+            ->get()
+            ->result_array();
     }
 
     public function getPage(int $page, int $pageSize = 20)
@@ -23,6 +24,7 @@ class Category_model extends CI_Model
         $limit = 0 >= $pageSize ? 20 : $pageSize;
         $offset = ($page - 1) * $limit;
         return $this->db->from(self::table)
+            ->order_by('id', 'desc')
             ->limit($limit, $offset)
             ->get()
             ->result_array();

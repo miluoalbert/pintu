@@ -8,9 +8,9 @@
     <!-- 用来防止别人在框架里调用你的页面 -->
     <meta http-equiv="Window-target" content="_top">
     <!-- 头部ico -->
-    <link rel="Shortcut Icon" href="favicon.ico">
+<!--    <link rel="Shortcut Icon" href="favicon.ico">-->
     <!-- ========== Css Files 通用========== -->
-    <link rel="stylesheet" href="/resources/css/normalize.css">
+<!--    <link rel="stylesheet" href="/resources/css/normalize.css">-->
     <link rel="stylesheet" href="/resources/css/font-style.css">
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/css/common.css">

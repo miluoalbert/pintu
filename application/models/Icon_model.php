@@ -16,6 +16,8 @@ class Icon_model extends CI_Model
         $limit = 0 >= $pageSize ? 20 : $pageSize;
         $offset = ($page - 1) * $limit;
         return $this->db->from(self::table)
+            ->order_by('sort', 'desc')
+            ->order_by('id', 'desc')
             ->limit($limit, $offset)
             ->get()
             ->result_array();
@@ -55,13 +57,16 @@ class Icon_model extends CI_Model
 
     public function getIcons()
     {
-        return $this->db->select()
+        $selectFields = 'category.id as category_id, category.name as category_name';
+        $selectFields .= ', icon.id as icon_id, icon.name as icon_name, e_name as icon_ename';
+        $selectFields .= ', url, icon_url';
+        return $this->db->select($selectFields)
             ->from('category')
             ->join('icon', 'category.id = icon.category_id', 'left')
             ->where('category.is_show', 1)
             ->where('icon.is_show', 1)
-            ->order_by('category.sort', 'desc')
-            ->order_by('icon.sort', 'desc')
+            ->order_by('category.sort')
+            ->order_by('icon.sort')
             ->get()
             ->result_array();
     }

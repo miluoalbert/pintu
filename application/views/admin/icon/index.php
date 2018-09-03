@@ -8,14 +8,23 @@
     <!--  通用表格样式 -->
     <table class="table table-bordered panel-bg panel-table" >
         <thead class="panel-table-title">
-        <tr><th>ID</th><th>ICON</th><th>图标名称</th><th>图标英文名称</th><th>是否显示</th>
-            <th>所属分类</th><th>排序</th><th>添加时间</th><th>操作</th></tr>
+        <tr><th>ID</th><th>ICON</th><th>IMAGE</th><th>图标名称</th><th>图标英文名称</th><th>是否显示</th>
+            <th>所属分类</th><th>排序</th><th>添加时间</th><th>编辑时间</th><th>操作</th></tr>
         </thead>
         <tbody>
         <?php if (! empty($data)): foreach ($data as $row):?>
             <tr>
                 <td><?=$row['id'] ?? ''?></td>
-                <td><img src="<?=base_url() . $row['icon_url'] ?? ''?>" style="height:60px;"></td>
+                <td>
+                    <span style="margin-right:10px;background-color:#000000;display:inline-block;">
+                        <img src="<?=base_url() . $row['icon_url'] ?? ''?>" style="height:60px;">
+                    </span>
+                </td>
+                <td>
+                    <span style="margin-right:10px;background-color:#000000;display:inline-block;">
+                        <img src="<?=base_url() . $row['url'] ?? ''?>" style="height:60px;">
+                    </span>
+                </td>
                 <td><?=$row['name'] ?? ''?></td>
                 <td><?=$row['e_name'] ?? ''?></td>
                 <td>
@@ -28,6 +37,7 @@
                 <td><?=$category[$row['category_id']] ?? '未知分类'?></td>
                 <td><?=$row['sort']?></td>
                 <td><?=$row['created_at']?></td>
+                <td><?=$row['updated_at']?></td>
                 <td>
                     <a href="javascript:;" class="link-event mlr10 handle" data-id="<?php echo $row['id']?>" data-status="2">编辑</a>
                     <a href="javascript:;" class="link-event mlr10 delete" data-id="<?php echo $row['id']?>">删除</a>
@@ -111,7 +121,9 @@
         <tr>
             <td class="text-right plr25 table-bg">ICON图片</td>
             <td class="text-left plr25">
+                <span style="margin-right:10px;background-color:#000000;display:inline-block;">
                 <img src="{{ data.full_icon_url }}" id="showIconImg" style="height:60px;">
+                </span>
                 <button id="addIcon" type="button" onclick="$('#iconUpload').click();" class="btn btn-success">
                     <i class="glyphicon glyphicon-plus"></i>选择图片</button>
                 <button type="button" class="btn btn-danger" style="display:none;" onclick="delIconImg()" id="delIcon">
@@ -121,7 +133,8 @@
         <tr>
             <td class="text-right plr25 table-bg">Image图片</td>
             <td class="text-left plr25">
-                <img src="{{ data.full_url }}" id="showImageImg" style="height:60px;">
+                <span style="margin-right:10px;background-color:#000000;display:inline-block;">
+                    <img src="{{ data.full_url }}" id="showImageImg" style="height:60px;"></span>
                 <button id="addImage" type="button" onclick="$('#imageUpload').click();" class="btn btn-success">
                     <i class="glyphicon glyphicon-plus"></i>选择图片</button>
                 <button type="button" class="btn btn-danger" style="display:none;" onclick="delImageImg()" id="delImage">

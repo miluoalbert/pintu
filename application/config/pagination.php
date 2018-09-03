@@ -21,3 +21,4 @@ $config['next_tag_open'] = '<li>';
 $config['next_tag_close'] = '</li>';
 $config['use_page_numbers'] = TRUE;
 $config['per_page'] = 10;
+$config['num_links'] = 5;
