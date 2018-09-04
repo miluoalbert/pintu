@@ -235,4 +235,9 @@ class Icon extends AdminController
             return self::responseError('设置失败');
         }
     }
+
+    public function batch()
+    {
+        $this->view('icon/batch');
+    }
 }

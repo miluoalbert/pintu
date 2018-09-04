@@ -47,4 +47,33 @@ class Upload extends Controller
             return self::responseOK(['path' => $path, 'url' => $url]);
         }
     }
+
+    public function batch()
+    {
+        $config['upload_path'] = UPLOAD_PATH . 'icons' . DIRECTORY_SEPARATOR;
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size'] = 10240;
+        $config['max_width'] = 10240;
+        $config['max_height'] = 7680;
+        $config['encrypt_name'] = true;
+        $this->load->library('upload', $config);
+        if (! $this->upload->do_upload('file')) {
+            return self::responseError($this->upload->display_errors());
+        } else {
+            $fileInfo = $this->upload->data();
+            $path = 'resources/uploads/icons/' . $fileInfo['file_name'];
+            $url = base_url() . $path;
+
+            $origName = $fileInfo['orig_name'];
+            if (! empty($origName)) {
+                $this->load->model('icon_model');
+                $res = $this->icon_model->insertBySplitCharacter($origName, $path);
+                if ($res) {
+                    return self::responseSuccess('批量上传成功', ['path' => $path, 'url' => $url]);
+                }
+            }
+
+            return self::responseError('文件名命名规则有误：' . $origName);
+        }
+    }
 }

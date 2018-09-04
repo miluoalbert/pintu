@@ -24,6 +24,7 @@ class Icon_model extends CI_Model
             $sort = self::sortRule[$orderBy['field']];
             $direction = empty($orderBy['direction']) ? ' desc' : ' asc';
         }
+
         $limit = 0 >= $pageSize ? 20 : $pageSize;
         $offset = ($page - 1) * $limit;
         empty($conditions) || $this->db->where($conditions);
@@ -33,7 +34,7 @@ class Icon_model extends CI_Model
             ->limit($limit, $offset)
             ->get()
             ->result_array();
-//        echo $this->db->last_query();die;
+
         return $return;
     }
 
@@ -47,6 +48,7 @@ class Icon_model extends CI_Model
 
     public function add($data)
     {
+        $data['identifier'] = "{$data['category_id']}_{$data['name']}_{$data['e_name']}";
         return $this->db->insert(self::table, $data);
     }
 
@@ -67,6 +69,9 @@ class Icon_model extends CI_Model
 
     public function set(int $id, $data)
     {
+        if (! empty($data['category_id']) || ! empty($data['name']) || ! empty($data['e_name'])) {
+            $data['identifier'] = "{$data['category_id']}_{$data['name']}_{$data['e_name']}";;
+        }
         return $this->db->from(self::table)
                         ->where('id', $id)
                         ->set($data)
@@ -87,5 +92,41 @@ class Icon_model extends CI_Model
             ->order_by('icon.sort')
             ->get()
             ->result_array();
+    }
+
+    public function insertBySplitCharacter(string $splitCharacterName, string $filePath): bool
+    {
+        $fileInfo = explode('_', $splitCharacterName);
+
+        if (5 == count($fileInfo)) {
+            $identifier = "{$fileInfo[0]}_{$fileInfo[2]}_{$fileInfo[3]}";
+            $existed = (boolean)$this->db->from(self::table)
+                ->where('identifier', $identifier)
+                ->count_all_results();
+            $urlName = 1 == $fileInfo[4] ? 'icon_url' : 'url';
+            if ($existed) {
+                $updateData = [
+                    $urlName => $filePath,
+                ];
+                $res = $this->db->from(self::table)
+                    ->set($updateData)
+                    ->where('identifier', $identifier)
+                    ->update();
+            } else {
+                $insertData = [
+                    'category_id' => $fileInfo[0],
+                    'name' => $fileInfo[2],
+                    'e_name' => $fileInfo[3],
+                    'sort' => $fileInfo[1],
+                    'identifier' => $identifier,
+                    $urlName => $filePath,
+                ];
+                var_dump($insertData);
+                $res = $this->db->insert(self::table, $insertData);
+            }
+            return $res;
+        }
+
+        return false;
     }
 }

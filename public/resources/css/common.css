@@ -162,6 +162,7 @@ body{min-width:1180px;min-height:100%;padding-top:70px;font-size:15px;position:r
 /* 列表页面通用 */
 /* right-btn */
 .right-btn{position:absolute;top:-7px;right:0;}
+.right-btn1{position:absolute;top:-7px;right:130px;}
 .icon-add{font-size:24px;margin-right: 4px;}
 
 /* 弹窗通用 */

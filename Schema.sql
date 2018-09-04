@@ -19,8 +19,20 @@ CREATE TABLE `icon` (
   `icon_url` VARCHAR(255) NOT NULL DEFAULT '' COMMENT 'icon地址',
   `sort` TINYINT NOT NULL DEFAULT 0 COMMENT '排序,从大到小',
   `is_show` TINYINT NOT NULL DEFAULT 1 COMMENT '是否显示[0:否,1:是]',
+  `identifier` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '图标标识符,唯一确定一组图标',
   `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY `id` (`id`),
-  KEY `category_id` (`category_id`)
+  KEY `idx_category_id` (`category_id`),
+  UNIQUE KEY `uidx_identifier` (`identifier`)
 ) ENGINE=InnoDB DEFAULT CHAR SET utf8;
+
+
+
+
+
+UPDATE `icon` SET `identifier` = CONCAT_WS('_', `category_id`, `name`, `e_name`);
+ALTER TABLE `icon` ADD COLUMN `identifier` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '图标标识符,唯一确定一组图标';
+ALTER TABLE `icon` ADD UNIQUE KEY `uidx_identifier` (`identifier`);
+
+select CONCAT_WS('_', `category_id`, `name`, `e_name`) from `icon`;

@@ -1,6 +1,9 @@
 <div class="content">
     <h4 class="mtb24 pos-r clr">
         <span><i class="icon-point mr10"></i><span class="va-m">图标管理</span></span>
+        <span class="right-btn1 icon-files" data-toggle="modal">
+            <a role="button" class="btn add-btn" href="/admin/icon/batch"><i class="icon-add"></i>批量导入图标</a>
+        </span>
         <span class="right-btn handle" data-status="1" data-toggle="modal">
             <button type="button" class="btn add-btn"><i class="icon-add"></i>添加图标</button>
         </span>
@@ -58,7 +61,7 @@
             </tr>
         <?php endforeach; else: ?>
         <tr>
-            <td colspan="9">暂无数据</td>
+            <td colspan="11">暂无数据</td>
         </tr>
         <?php endif;?>
         </tbody>
@@ -108,7 +111,7 @@
         <tr>
             <td class="table-bg">图标英文名称</td>
             <td class="wd70p text-left plr25">
-                <input type="text" name="ename" class="none-bd" placeholder="请输入图标英文名称" value="{{ data.name }}">
+                <input type="text" name="ename" class="none-bd" placeholder="请输入图标英文名称" value="{{ data.e_name }}">
             </td>
         </tr>
         <tr>
