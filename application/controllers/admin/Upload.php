@@ -53,8 +53,8 @@ class Upload extends Controller
         $config['upload_path'] = UPLOAD_PATH . 'templates' . DIRECTORY_SEPARATOR;
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size'] = 5120;
-        $config['max_width'] = 1024;
-        $config['max_height'] = 768;
+        $config['max_width'] = 2048;
+        $config['max_height'] = 2048;
         $config['encrypt_name'] = true;
         $this->load->library('upload', $config);
         if (! $this->upload->do_upload('template_file')) {
