@@ -48,6 +48,25 @@ class Upload extends Controller
         }
     }
 
+    public function template()
+    {
+        $config['upload_path'] = UPLOAD_PATH . 'templates' . DIRECTORY_SEPARATOR;
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size'] = 100;
+        $config['max_width'] = 1024;
+        $config['max_height'] = 768;
+        $config['encrypt_name'] = true;
+        $this->load->library('upload', $config);
+        if (! $this->upload->do_upload('template_file')) {
+            return self::responseError($this->upload->display_errors());
+        } else {
+            $fileName = $this->upload->data()['file_name'];
+            $path = 'resources/uploads/templates/' . $fileName;
+            $url = base_url() . $path;
+            return self::responseOK(['path' => $path, 'url' => $url]);
+        }
+    }
+
     public function batch()
     {
         $config['upload_path'] = UPLOAD_PATH . 'icons' . DIRECTORY_SEPARATOR;

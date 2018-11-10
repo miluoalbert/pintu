@@ -13,5 +13,10 @@
                 <span>图标管理</span>
             </a>
         </li>
+        <li>
+            <a href="/admin/template/index"><i class="icon-fonts icon-message"></i>
+                <span>模板管理</span>
+            </a>
+        </li>
     </ul>
 </div>
