@@ -73,9 +73,9 @@ class Template extends AdminController
         if (empty($arrange)) {
             return self::responseError('必须上传icon位置描述');
         }
-        $bg2_url = empty($bg2_url) ? $bg2_url : '';
-        $bg3_url = empty($bg3_url) ? $bg3_url : '';
-        $bg4_url = empty($bg4_url) ? $bg4_url : '';
+        $bg2_url = empty($bg2_url) ? '' : $bg2_url;
+        $bg3_url = empty($bg3_url) ? '' : $bg3_url;
+        $bg4_url = empty($bg4_url) ? '' : $bg4_url;
 
         $sort = 0 < $sort ? $sort : 0;
 
